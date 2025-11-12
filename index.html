@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidades de Empleo - Hotel Venetur Margarita</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --venetur-red: #cf0404;
+            --venetur-gold: #f8b500;
+            --venetur-light: #e9f2ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--venetur-red) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 86, 179, 0.75)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+        
+        .hotel-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-venetur {
+            background-color: var(--venetur-red);
+            border-color: var(--venetur-red);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .btn-venetur:hover {
+            background-color: #cf0404;
+            border-color: #cf0404;
+            color: white;
+        }
+        
+        .btn-venetur-outline {
+            border: 2px solid var(--venetur-red);
+            color: var(--venetur-red);
+            font-weight: 600;
+        }
+        
+        .btn-venetur-outline:hover {
+            background-color: var(--venetur-red);
+            color: white;
+        }
+        
+        .vacancy-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .vacancy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .vacancy-highlight {
+            border-left: 5px solid var(--venetur-gold);
+        }
+        
+        .vacancy-executive {
+            background-color: var(--venetur-light);
+        }
+        
+        .badge-executive {
+            background-color: var(--venetur-gold);
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .company-info {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: var(--venetur-red);
+            border-bottom: 2px solid var(--venetur-gold);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .tag {
+            display: inline-block;
+            background-color: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag i {
+            margin-right: 5px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--venetur-red);
+            color: white;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--venetur-gold);
+            color: #333;
+        }
+        
+        .footer {
+            background-color: #cf0404;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--venetur-gold);
+        }
+        
+        .vacancy-new {
+            position: relative;
+        }
+        
+        .vacancy-new::before {
+            content: "NUEVO";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #28a745;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 0;
+                text-align: center;
+            }
+            
+            .hotel-logo {
+                max-width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="LOGO NUEVO rojo PNG.png" alt="Hotel Venetur Margarita" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Vacantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-venetur-outline" href="#apply">Subir CV</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Vacancies Section -->
+            <div class="col-lg-8">
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <h3 class="section-title">Filtrar Vacantes</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="search" class="form-label">Buscar por puesto</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search" placeholder="Ej: Recepcionista, Gerente...">
+                                <button class="btn btn-venetur" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="department" class="form-label">Departamento</label>
+                            <select class="form-select" id="department">
+                                <option selected>Todos los departamentos</option>
+                                <option>Dirección y Gerencia</option>
+                                <option>Recepcion y Atención al Cliente</option>
+                                <option>Gastronomía y Alimentos/Bebidas</option>
+                                <option>Limpieza y Mantenimiento</option>
+                                <option>Seguridad</option>
+                                <option>Animación y Entretenimiento</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-outline-secondary">Limpiar filtros</button>
+                        <button class="btn btn-venetur">Aplicar filtros</button>
+                    </div>
+                </div>
+
+                <!-- Vacancies List -->
+                <h3 class="section-title mt-5">Oportunidades Disponibles</h3>
+                
+                <!-- Executive Position -->
+                <div class="card vacancy-card vacancy-highlight vacancy-executive">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h4 class="card-title">Director General</h4>
+                                <span class="badge badge-executive">Alta Dirección</span>
+                            </div>
+                            <span class="text-success fw-bold">Nuevo</span>
+                        </div>
+                        <p class="card-text mt-3">
+                            <i class="fas fa-map-marker-alt text-muted me-2"></i>Porlamar, Nueva Esparta, Venezuela
+                        </p>
+                        <p class="card-text">
+                            <i class="fas fa-building text-muted me-2"></i>Dirección y Gerencia
+                        </p>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="tag"><i class="fas fa-clock"></i> Tiempo Completo</span>
+                            <span class="tag"><i class="fas fa-user-tie"></i> Presencial</span>
+                            <span class="tag"><i class="fas fa-calendar-alt"></i> Publicado hace 2 días</span>
+                        </div>
+                        <p class="card-text mt-3">Buscamos un Director General con experiencia en la industria hotelera para liderar nuestras operaciones en el Hotel Venetur Margarita.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="#" class="btn btn-venetur">Postularme</a>
+                            <a href="#" class="text-decoration-none">
+                                <i class="far fa-heart text-muted"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Position -->
+                <div class="card vacancy-card vacancy-new">
+                    <div class="card-body">
+                        <h4 class="card-title">Recepcionista</h4>
+                        <p class="card-text mt-3">
+                            <i class="fas fa-map-marker-alt text-muted me-2"></i>Porlamar, Nueva Esparta, Venezuela
+                        </p>
+                        <p class="card-text">
+                            <i class="fas fa-building text-muted me-2"></i>Recepción y Atención al Cliente
+                        </p>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="tag"><i class="fas fa-clock"></i> Tiempo Completo</span>
+                            <span class="tag"><i class="fas fa-user-tie"></i> Presencial</span>
+                            <span class="tag"><i class="fas fa-calendar-alt"></i> Publicado hace 5 días</span>
+                        </div>
+                        <p class="card-text mt-3">Estamos buscando un Recepcionista con excelentes habilidades de comunicación y servicio al cliente para unirse a nuestro equipo.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="#" class="btn btn-venetur">Postularme</a>
+                            <a href="#" class="text-decoration-none">
+                                <i class="far fa-heart text-muted"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Position -->
+                <div class="card vacancy-card vacancy-executive">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h4 class="card-title">Chef Ejecutivo</h4>
+                                <span class="badge badge-executive">Alta Dirección</span>
+                            </div>
+                        </div>
+                        <p class="card-text mt-3">
+                            <i class="fas fa-map-marker-alt text-muted me-2"></i>Porlamar, Nueva Esparta, Venezuela
+                        </p>
+                        <p class="card-text">
+                            <i class="fas fa-building text-muted me-2"></i>Gastronomía y Alimentos/Bebidas
+                        </p>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="tag"><i class="fas fa-clock"></i> Tiempo Completo</span>
+                            <span class="tag"><i class="fas fa-user-tie"></i> Presencial</span>
+                            <span class="tag"><i class="fas fa-calendar-alt"></i> Publicado hace 1 semana</span>
+                        </div>
+                        <p class="card-text mt-3">Buscamos un Chef Ejecutivo creativo y con experiencia para liderar nuestra cocina y desarrollar menús excepcionales.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="#" class="btn btn-venetur">Postularme</a>
+                            <a href="#" class="text-decoration-none">
+                                <i class="far fa-heart text-muted"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Position -->
+                <div class="card vacancy-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Camarero/a</h4>
+                        <p class="card-text mt-3">
+                            <i class="fas fa-map-marker-alt text-muted me-2"></i>Porlamar, Nueva Esparta, Venezuela
+                        </p>
+                        <p class="card-text">
+                            <i class="fas fa-building text-muted me-2"></i>Gastronomía y Alimentos/Bebidas
+                        </p>
+                        <div class="d-flex flex-wrap mt-3">
+                            <span class="tag"><i class="fas fa-clock"></i> Tiempo Completo</span>
+                            <span class="tag"><i class="fas fa-user-tie"></i> Presencial</span>
+                            <span class="tag"><i class="fas fa-calendar-alt"></i> Publicado hace 2 semanas</span>
+                        </div>
+                        <p class="card-text mt-3">Buscamos Camareros con experiencia para brindar un servicio excepcional en nuestro restaurante y bar.</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="#" class="btn btn-venetur">Postularme</a>
+                            <a href="#" class="text-decoration-none">
+                                <i class="far fa-heart text-muted"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Company Info -->
+                <div class="company-info">
+                    <h3 class="section-title" id="about">Sobre Nosotros</h3>
+                    <p>El Hotel Venetur Margarita es un destino de lujo ubicado en la hermosa isla de Margarita, ofreciendo experiencias únicas a nuestros huéspedes con el más alto estándar de servicio.</p>
+                    <p>Nuestro equipo está compuesto por profesionales apasionados por la hospitalidad, comprometidos con la excelencia y el crecimiento continuo.</p>
+                    <p>Valoramos la diversidad, la innovación y el desarrollo profesional de cada miembro de nuestro equipo.</p>
+                    
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Beneficios</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i> Plan de carrera y desarrollo</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Entorno de trabajo inclusivo</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Capacitaciones continuas</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Descuentos en servicios del hotel</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Seguro médico</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="company-info">
+                    <h3 class="section-title" id="contact">Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt text-primary me-2"></i> Av. 31 de Julio, Porlamar, Isla de Margarita, Venezuela</p>
+                    <p><i class="fas fa-phone text-primary me-2"></i> +58 295-1234567</p>
+                    <p><i class="fas fa-envelope text-primary me-2"></i> rrhh@veneturmargarita.com</p>
+                    <p><i class="fas fa-globe text-primary me-2"></i> <a href="https://www.venetur.gob.ve/" target="_blank">www.venetur.gob.ve</a></p>
+                    
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Síguenos</h5>
+                        <div class="d-flex mt-3">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CV Upload -->
+                <div class="company-info" id="apply">
+                    <h3 class="section-title">¿No encuentras tu vacante ideal?</h3>
+                    <p>Envíanos tu CV y te contactaremos cuando tengamos una posición que se ajuste a tu perfil.</p>
+                    <div class="mt-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cv" class="form-label">Subir CV</label>
+                            <input type="file" class="form-control" id="cv">
+                        </div>
+                        <button class="btn btn-venetur w-100">Enviar CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Hotel Venetur Margarita</h5>
+                    <p>Un destino de lujo en la hermosa isla de Margarita, comprometido con la excelencia en el servicio y el desarrollo de nuestro equipo.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Vacantes</a></li>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Porlamar, Nueva Esparta</li>
+                        <li><i class="fas fa-phone me-2"></i> +58 295-1234567</li>
+                        <li><i class="fas fa-envelope me-2"></i> rrhh@veneturmargarita.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Powered by</h5>
+                    <img src="https://www.hiringroom.com/hubfs/HiringRoom_Logo_White.png" alt="Hiring Room" style="max-width: 150px; filter: brightness(0) invert(1);">
+                </div>
+            </div>
+            <hr>
+            <div class="text-center pt-3">
+                <p>&copy; 2023 Hotel Venetur Margarita. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple search functionality
+        document.getElementById('search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const vacancies = document.querySelectorAll('.vacancy-card');
+            
+            vacancies.forEach(vacancy => {
+                const title = vacancy.querySelector('.card-title').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    vacancy.style.display = 'block';
+                } else {
+                    vacancy.style.display = 'none';
+                }
+            });
+        });
+        
+        // Department filter
+        document.getElementById('department').addEventListener('change', function() {
+            const department = this.value;
+            const vacancies = document.querySelectorAll('.vacancy-card');
+            
+            if (department === 'Todos los departamentos') {
+                vacancies.forEach(vacancy => {
+                    vacancy.style.display = 'block';
+                });
+                return;
+            }
+            
+            vacancies.forEach(vacancy => {
+                const deptText = vacancy.querySelector('.card-text:nth-child(3)').textContent;
+                if (deptText.includes(department)) {
+                    vacancy.style.display = 'block';
+                } else {
+                    vacancy.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
